@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/bulma.mod.css">
+    <title>Laporan Kilat PAS Gasal SMKTHP</title>
+</head>
+
+<body>
+    <div class="container px-2 p-4">
+        <div class="block my-6">
+            <h1 class="title has-text-centered">Laporan Kilat PAS Gasal SMKTHP</h1>
+        </div>
+        <table class="table is-fullwidth is-bordered ">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>NIS</th>
+                    <th>Nama</th>
+                    <th>Kelas</th>
+                    <th>Ruang</th>
+                    <th>Keterangan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% let i = 1 %>
+                <% reports.forEach((report) => { %>
+                <% report.students.forEach((student) => { %>
+                <tr>
+                    <th><%= i  %> </th>
+                    <td><%= student.uid %> </td>
+                    <td><%= student.name %> </td>
+                    <td><%= report.class %> </td>
+                    <td><%= report.room %> </td>
+                    <td><%= student.info %> </td>
+                </tr>
+                <% i++ %>
+                <% }) %>
+                <% }) %>
+            </tbody>
+        </table>
+        <% if (reports.length) { %>
+        <form action="/admin/reset" method="post" id="reset-form"
+            class="is-flex is-align-items-center is-justify-content-flex-end">
+            <p class="mr-4 is-size-3 has-text-danger" style="display: none" id="reset-lable">
+                Klik lagi untuk mengonfirmasi
+            </p>
+            <button class="button is-danger is-large" type="submit">Reset</button>
+        </form>
+        <script src="/assets/custom.admin.js"></script>
+        <% } %>
+    </div>
+</body>
+
+</html>

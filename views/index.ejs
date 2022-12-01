@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/bulma.mod.css">
+    <title>Laporan Kilat PAS Gasal SMKTHP</title>
+</head>
+
+<body>
+    <div class="container px-2 p-4" style="max-width: 600px">
+        <div class="block my-6">
+            <h1 class="title has-text-centered">Laporan Kilat PAS Gasal SMKTHP</h1>
+        </div>
+        <% if (locals.message) { %>
+        <div class="block pb-2">
+            <div class="notification <%= isError ? "is-danger" : "is-info" %>">
+                <%= message %>
+            </div>
+        </div>
+        <% } %>
+        <div class="block pb-6">
+            <form action="/" method="POST" id="box-form">
+                <div class="box has-background-success-light">
+                    <div class="field">
+                        <label class="label">Ruang <span class="has-text-danger">*</span></label>
+                        <div class="control">
+                            <input class="input" type="text" name="room" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Kelas <span class="has-text-danger">*</span></label>
+                        <div class="control">
+                            <input class="input" type="text" name="class">
+                        </div>
+                    </div>
+                </div>
+                <h2 class="subtitle pt-2 has-text-centered has-text-weight-bold">
+                    Siswa yang Tidak Hadir
+                </h2>
+                <div id="box-parent" class="block">
+                    <div class="box is-flex is-flex-direction-column has-background-success-light box-student">
+                        <div class="field">
+                            <label class="label">NIS <span class="has-text-danger">*</span></label>
+                            <div class="control">
+                                <input class="input" type="text" name="uids[]" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Nama <span class="has-text-danger">*</span></label>
+                            <div class="control">
+                                <input class="input" type="text" name="names[]" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Keterangan</label>
+                            <div class="control">
+                                <input class="input" type="text" name="infos[]">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="is-flex">
+                    <button class="button is-link is-light ml-auto" type="button" id="box-button">Input Baru</button>
+                    <button class="button is-link ml-2" type="submit">Kirim</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/assets/custom.js"></script>
+</body>
+
+</html>

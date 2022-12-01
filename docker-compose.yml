@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      - PORT=80
+      - ADMIN_USERNAME=adm0n
+      - ADMIN_PASSWORD=adm0n123
+      - MONGO_URI=mongodb://db:27017/kilat
+    ports:
+      - 1111:80
+  db:
+    image: mongo:5
+    volumes:
+      - data:/data/db
+
+volumes:
+  data:
